@@ -32,8 +32,6 @@ const crearDeck = () =>{
 crearDeck();
 
 // esta funcion me permite tomar una carta
-
-
 const pedirCarta = () => {
 
     if (deck.length === 0 ){
@@ -42,21 +40,17 @@ const pedirCarta = () => {
     const carta = deck.pop();
 
     console.log(carta);
-    console.log(deck);
      return carta;
 }
+pedirCarta();
 
- // pedirCarta();
-
+// esta funcion le assigna el valor númerico a la carta
  const valorCarta = (carta) => {
 
     const valor = carta.substring(0, carta.length-1);
     return (isNaN(valor) )?
             (valor === 'A') ? 11:10
             : valor * 1;
-
-   // console.log(puntos);
-
  }
 
  const valor = valorCarta(pedirCarta());
