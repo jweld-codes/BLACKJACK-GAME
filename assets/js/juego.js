@@ -14,9 +14,11 @@ let puntosJugador = 0 ,
     puntosComputador = 0;
 
 // referencias
+
 const btnPedir = document.querySelector('#btnPedir');
 const puntosHTML = document.querySelectorAll('small');
-   
+
+const divCartasJugador = document.querySelector('#jugador-cartas');
 
 // Crea nueva baraja de cartas
 const crearDeck = () =>{
@@ -55,15 +57,27 @@ pedirCarta();
  }
 
 // Eventos
+
 btnPedir.addEventListener('click',() => {
     
     const carta = pedirCarta();
 
     puntosJugador = puntosJugador + valorCarta(carta);
-    console.log(puntosJugador);
     puntosHTML[0].innerText = puntosJugador;
 
-    
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${ carta }.png`;
+    imgCarta.classList.add('carta');
+
+    divCartasJugador.append( imgCarta );
+
+    if (puntosJugador > 21){
+        console.warn('Jugador Perdió');
+        btnPedir.disabled = true;
+    }else if (puntosJugador === 21){
+        console.warn('Gano');
+        btnPedir.disabled = true;
+    }
 })
 
 
